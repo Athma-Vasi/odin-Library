@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+		<title>odin-Library</title>
+	</head>
+	<body>
+		<div class="container">
+			<main>
+				<h1>Library</h1>
+				<button type="button" class="bttn-addBook">Add new book</button>
+				<div class="form-container">
+					<form action="#" method="post" id="bookForm">
+						<img src="./icons/x-circle.svg" alt="close icon" class="icon-close" />
+						<fieldset>
+							<legend>Enter book info</legend>
+
+							<p>
+								<label for="bookTitle">Title</label>
+								<input type="text" name="bookTitle" id="bookTitle" />
+							</p>
+
+							<p>
+								<label for="bookAuthor">Author</label>
+								<input type="text" name="bookAuthor" id="bookAuthor" />
+							</p>
+
+							<p>
+								<span>
+									<label for="bookLanguage">Language</label>
+									<select name="bookLanguage" id="bookLanguage">
+										<option value="english">English</option>
+										<option value="french">French</option>
+									</select></span
+								>
+							</p>
+
+							<p>
+								<label for="bookPages">Pages</label>
+								<input type="number" name="bookPages" id="bookPages" />
+							</p>
+
+							<p>
+								<fieldset>
+									<legend>Status</legend>
+									<span>
+										<label for="isFinished">Finished</label>
+										<input
+											type="radio"
+											name="readStatus"
+											id="isFinished"
+											class="isFinished"
+										/>
+									</span>
+									<span>
+										<label for="inProgress">In progress</label>
+										<input
+											type="radio"
+											name="readStatus"
+											id="inProgress"
+											class="inProgress"
+										/>
+									</span>
+								</fieldset>
+							</p>
+
+							<p>
+								<span>
+									<label for="feelings">Feelings</label>
+									<textarea
+										name="feelings"
+										id="feelings"
+										cols="30"
+										rows="10"
+										form="bookForm"
+										maxlength="500"
+										placeholder="Enter thoughts"
+										spellcheck="true"
+										wrap="hard"
+									></textarea>
+								</span>
+							</p>
+
+							<button type="submit" class="bttn-submit">Enter</button>
+						</fieldset>
+					</form>
+				</div>
+				<div class="books"></div>
+			</main>
+			<footer>
+				<p>Made by <a href="https://github.com/Athma-Vasi">Athma Vasi</a></p>
+				<a href="#">View Code</a>
+			</footer>
+		</div>
+		<!--  -->
+		<!--  -->
+		<script src="./script.js" defer></script>
+	</body>
+</html>

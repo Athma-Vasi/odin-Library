@@ -1,0 +1,4 @@
+.vscode/
+tsconfig.json
+.prettierrc.js
+icons/
