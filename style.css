@@ -15,6 +15,7 @@ html {
 	--clr-med: hsl(9, 41%, 87%);
 	--clr-heavy: hsl(9, 9%, 48%);
 	--clr-dark: hsl(9, 1%, 38%);
+	--icon-del: url(./icons/delete-circle-outline.png);
 }
 
 body {
@@ -31,4 +32,13 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow: auto;
+}
+
+.icon-delete,
+.icon-close,
+.icon-statusChange {
+	height: 30px;
+	width: 30px;
+	clip-path: circle();
+	background-color: var(--clr-heavy);
 }

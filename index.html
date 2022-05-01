@@ -11,10 +11,14 @@
 		<div class="container">
 			<main>
 				<h1>Library</h1>
+
 				<button type="button" class="bttn-addBook">Add new book</button>
+
+				<div class="card-container"></div>
+
 				<div class="form-container">
 					<form action="#" method="post" id="bookForm">
-						<img src="./icons/x-circle.svg" alt="close icon" class="icon-close" />
+						<img src="./icons/close-circle.png" alt="close icon" class="icon-close" />
 						<fieldset>
 							<legend>Enter book info</legend>
 
@@ -32,8 +36,8 @@
 								<span>
 									<label for="bookLanguage">Language</label>
 									<select name="bookLanguage" id="bookLanguage">
-										<option value="english">English</option>
-										<option value="french">French</option>
+										<option value="English">English</option>
+										<option value="French">French</option>
 									</select></span
 								>
 							</p>
@@ -69,15 +73,15 @@
 
 							<p>
 								<span>
-									<label for="feelings">Feelings</label>
+									<label for="review">Review</label>
 									<textarea
-										name="feelings"
-										id="feelings"
+										name="review"
+										id="review"
 										cols="30"
 										rows="10"
 										form="bookForm"
 										maxlength="500"
-										placeholder="Enter thoughts"
+										placeholder="How do you feel about this book?"
 										spellcheck="true"
 										wrap="hard"
 									></textarea>
@@ -88,7 +92,7 @@
 						</fieldset>
 					</form>
 				</div>
-				<div class="books"></div>
+				
 			</main>
 			<footer>
 				<p>Made by <a href="https://github.com/Athma-Vasi">Athma Vasi</a></p>
