@@ -3,6 +3,11 @@ const mainApp = function () {
     const log = (i) => console.log('\n', i);
     const bttnAddBook = document.querySelector('.bttn-addBook');
     const formBook = document.querySelector('#bookForm');
+    const body = document.querySelector('.body');
+    const formContainer = document.querySelector('.form-container');
+    const closeIcon = document.querySelector('.icon-close');
+    const cardContainer = document.querySelector('.card-container');
+    const finishedBttn = document.querySelector('.isFinished');
     //
     //
     //
@@ -22,8 +27,10 @@ const mainApp = function () {
     //
     function handleBttnAddBook(ev) {
         // if (formContainer) formContainer.style.display = 'block'
-        log(this);
-        log(ev);
+        if (formContainer && body) {
+            formContainer.style.display = 'inline-block';
+            body.style.background = 'hsla(0,0%,0%,0.3)';
+        }
     }
     //
     //
@@ -45,9 +52,6 @@ const mainApp = function () {
     function handleFormSubmit(ev) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         ev.preventDefault();
-        const closeIcon = document.querySelector('.icon-close');
-        const finishedBttn = document.querySelector('.isFinished');
-        // const progressBttn: Input = document.querySelector('.inProgress')
         const formData = new FormData(this);
         const formTitle = (_b = (_a = formData.get('bookTitle')) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '';
         const formAuthor = (_d = (_c = formData.get('bookAuthor')) === null || _c === void 0 ? void 0 : _c.toString()) !== null && _d !== void 0 ? _d : '';
@@ -58,13 +62,16 @@ const mainApp = function () {
         //
         //
         createCard(formTitle, formAuthor, formLanguage, formPages, formFinished, formReview);
+        if (formContainer && body) {
+            formContainer.style.display = 'none';
+            body.style.background = 'var(--clr-light)';
+        }
     }
     function createCard(..._formData) {
-        const cardContainer = document.querySelector('.card-container');
         const addClassToDiv = createElem('div');
         const addClassToPara = createElem('p');
-        const addClassToDelIcon = createImage('./icons/delete-circle.png');
-        const addClassToCheckIcon = createImage('./icons/check-circle.png');
+        const addClassToDelIcon = createImage('./icons/delete-circle-outline.png');
+        const addClassToCheckIcon = createImage('./icons/check-circle-outline.png');
         const bookContainer = addClassToDiv('card-book');
         const iconContainer = addClassToDiv('icon-card-container');
         const cardTitle = addClassToPara('card-title');
@@ -83,32 +90,36 @@ const mainApp = function () {
         bookContainer.appendChild(cardAuthor);
         cardAuthor.textContent = `by ${_formData[1]}`;
         bookContainer.appendChild(cardLanguage);
-        cardLanguage.textContent = _formData[2];
+        cardLanguage.textContent = `Language: ${_formData[2]}`;
         bookContainer.appendChild(cardPages);
-        cardPages.textContent = _formData[3];
+        cardPages.textContent = `Pages: ${_formData[3]}`;
         bookContainer.appendChild(cardStatus);
-        cardStatus.textContent = _formData[4];
+        cardStatus.textContent = `Status: ${_formData[4]}`;
         bookContainer.appendChild(cardReview);
         cardReview.textContent = _formData[5];
         bookContainer.appendChild(iconContainer);
         iconContainer.appendChild(cardDelete);
         iconContainer.appendChild(cardStatusChange);
-        // const addTextTobookContainer = appendOffspring(cardContainer, bookContainer)
-        // const addTextToCardTitle = appendOffspring(bookContainer, cardTitle)
-        // const addTextToCardAuthor = appendOffspring(bookContainer, cardAuthor)
-        // const addTextToCardLanguage = appendOffspring(bookContainer, cardLanguage)
-        // const addTextToCardPages = appendOffspring(bookContainer, cardPages)
-        // const addTextToCardStatus = appendOffspring(bookContainer, cardStatus)
-        // const addTextToCardReview = appendOffspring(bookContainer, cardReview)
-        // addTextToCardTitle(_formData[0])
-        // addTextToCardAuthor(_formData[1])
-        // addTextToCardLanguage(_formData[2])
-        // addTextToCardPages(_formData[3])
-        // addTextToCardStatus(_formData[4])
-        // addTextToCardReview(_formData[5])
-        log(_formData);
+        const deleteIcon = document.querySelector('.icon-delete');
+        const statusChangeIcon = document.querySelector('.icon-statusChange');
+        //
+        deleteIcon === null || deleteIcon === void 0 ? void 0 : deleteIcon.addEventListener('click', handleDeleteCard);
+        statusChangeIcon === null || statusChangeIcon === void 0 ? void 0 : statusChangeIcon.addEventListener('click', handleStatusChange);
+        //
     }
     //
+    function handleCloseIcon(ev) {
+        if (formContainer && body) {
+            formContainer.style.display = 'none';
+            body.style.background = 'var(--clr-light)';
+        }
+    }
+    function handleDeleteCard(ev) {
+        //use foreach from parent container to add eventlistener to all children to be clicked to removed
+    }
+    function handleStatusChange(ev) {
+        log(this);
+    }
     //
     //
     //
@@ -140,19 +151,7 @@ const mainApp = function () {
             return img;
         };
     }
-    // function appendOffspring(
-    // 	parentElem: HTMLElement | null,
-    // 	childElem: HTMLElement | null
-    // ) {
-    // 	return function (_textContent: string) {
-    // 		const text = document.createTextNode(_textContent)
-    // 		if (childElem) {
-    // 			parentElem?.appendChild(childElem)
-    // 			childElem.appendChild(text)
-    // 		}
-    // 		return childElem
-    // 	}
-    // }
+    //
     //
     //
     //
@@ -172,5 +171,6 @@ const mainApp = function () {
     //
     bttnAddBook === null || bttnAddBook === void 0 ? void 0 : bttnAddBook.addEventListener('click', handleBttnAddBook);
     formBook === null || formBook === void 0 ? void 0 : formBook.addEventListener('submit', handleFormSubmit);
+    closeIcon === null || closeIcon === void 0 ? void 0 : closeIcon.addEventListener('click', handleCloseIcon);
 };
 document.addEventListener('DOMContentLoaded', mainApp);

@@ -7,93 +7,91 @@
 		<link rel="stylesheet" href="./style.css" />
 		<title>odin-Library</title>
 	</head>
-	<body>
+	<body class="body">
 		<div class="container">
-			<main>
-				<h1>Library</h1>
+			<h1>Library</h1>
 
-				<button type="button" class="bttn-addBook">Add new book</button>
+			<button type="button" class="bttn-addBook">Add new book</button>
 
-				<div class="card-container"></div>
+			<div class="card-container"></div>
 
-				<div class="form-container">
-					<form action="#" method="post" id="bookForm">
-						<img src="./icons/close-circle.png" alt="close icon" class="icon-close" />
-						<fieldset>
-							<legend>Enter book info</legend>
+			<div class="form-container">
+				<form action="#" method="post" id="bookForm">
+					<img src="./icons/close-circle-outline.png" alt="close icon" class="icon-close" />
 
-							<p>
-								<label for="bookTitle">Title</label>
-								<input type="text" name="bookTitle" id="bookTitle" />
-							</p>
+					<fieldset class=" fieldset form-fieldset">
+						<legend>Enter book info</legend>
 
-							<p>
-								<label for="bookAuthor">Author</label>
-								<input type="text" name="bookAuthor" id="bookAuthor" />
-							</p>
+						<p class="form-block form-title">
+							<label for="bookTitle">Title</label>
+							<input type="text" name="bookTitle" id="bookTitle" />
+						</p>
 
-							<p>
-								<span>
-									<label for="bookLanguage">Language</label>
-									<select name="bookLanguage" id="bookLanguage">
-										<option value="English">English</option>
-										<option value="French">French</option>
-									</select></span
-								>
-							</p>
+						<p class="form-block form-author">
+							<label for="bookAuthor">Author</label>
+							<input type="text" name="bookAuthor" id="bookAuthor" />
+						</p>
 
-							<p>
-								<label for="bookPages">Pages</label>
-								<input type="number" name="bookPages" id="bookPages" />
-							</p>
+						<p class="form-block ">
+							<span class="form-language">
+								<label for="bookLanguage" class="form-language-label">Language</label>
+								<select name="bookLanguage" id="bookLanguage">
+									<option value="English">English</option>
+									<option value="French">French</option>
+								</select></span
+							>
+						</p>
 
-							<p>
-								<fieldset>
-									<legend>Status</legend>
-									<span>
-										<label for="isFinished">Finished</label>
-										<input
-											type="radio"
-											name="readStatus"
-											id="isFinished"
-											class="isFinished"
-										/>
-									</span>
-									<span>
-										<label for="inProgress">In progress</label>
-										<input
-											type="radio"
-											name="readStatus"
-											id="inProgress"
-											class="inProgress"
-										/>
-									</span>
-								</fieldset>
-							</p>
+						<p class="form-block form-pages">
+							<label for="bookPages">Pages</label>
+							<input type="number" name="bookPages" id="bookPages" />
+						</p>
 
-							<p>
-								<span>
-									<label for="review">Review</label>
-									<textarea
-										name="review"
-										id="review"
-										cols="30"
-										rows="10"
-										form="bookForm"
-										maxlength="500"
-										placeholder="How do you feel about this book?"
-										spellcheck="true"
-										wrap="hard"
-									></textarea>
+						<p class="form-block form-status">
+							<fieldset class="fieldset form-fieldset-info">
+								<legend>Status</legend>
+								<span class="form-status_finished">
+									<label for="isFinished">Finished</label>
+									<input
+										type="radio"
+										name="readStatus"
+										id="isFinished"
+										class="isFinished"
+									/>
 								</span>
-							</p>
+								<span class="form-status_progress">
+									<label for="inProgress">Reading</label>
+									<input
+										type="radio"
+										name="readStatus"
+										id="inProgress"
+										class="inProgress"
+									/>
+								</span>
+							</fieldset>
+						</p>
 
-							<button type="submit" class="bttn-submit">Enter</button>
-						</fieldset>
-					</form>
-				</div>
-				
-			</main>
+						<p class="form-block form-review">
+							<span class="form-review-span">
+								<label for="review">Review</label>
+								<textarea
+									name="review"
+									id="review"
+									cols="30"
+									rows="5"
+									form="bookForm"
+									maxlength="150"
+									placeholder="How do you feel about this book?"
+									spellcheck="true"
+									wrap="hard"
+								></textarea>
+							</span>
+						</p>
+
+						<button type="submit" class="bttn-submit">Enter</button>
+					</fieldset>
+				</form>
+			</div>
 			<footer>
 				<p>Made by <a href="https://github.com/Athma-Vasi">Athma Vasi</a></p>
 				<a href="#">View Code</a>

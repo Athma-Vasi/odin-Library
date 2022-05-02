@@ -6,9 +6,16 @@ const mainApp = function () {
 	type Input = HTMLInputElement | null
 	type Image = HTMLImageElement | null
 	type Div = HTMLDivElement | null
+	type Body = HTMLBodyElement | null
 
 	const bttnAddBook: Button = document.querySelector('.bttn-addBook')
 	const formBook: Form = document.querySelector('#bookForm')
+	const body: Body = document.querySelector('.body')
+	const formContainer: Div = document.querySelector('.form-container')
+	const closeIcon: Image = document.querySelector('.icon-close')
+
+	const cardContainer: Div = document.querySelector('.card-container')
+	const finishedBttn: Input = document.querySelector('.isFinished')
 	//
 	//
 	//
@@ -28,8 +35,11 @@ const mainApp = function () {
 	//
 	function handleBttnAddBook(this: HTMLButtonElement, ev: MouseEvent) {
 		// if (formContainer) formContainer.style.display = 'block'
-		log(this)
-		log(ev)
+
+		if (formContainer && body) {
+			formContainer.style.display = 'inline-block'
+			body.style.background = 'hsla(0,0%,0%,0.3)'
+		}
 	}
 	//
 	//
@@ -51,10 +61,6 @@ const mainApp = function () {
 	function handleFormSubmit(this: HTMLFormElement, ev: SubmitEvent) {
 		ev.preventDefault()
 
-		const closeIcon: Image = document.querySelector('.icon-close')
-		const finishedBttn: Input = document.querySelector('.isFinished')
-		// const progressBttn: Input = document.querySelector('.inProgress')
-
 		const formData = new FormData(this)
 		const formTitle = formData.get('bookTitle')?.toString() ?? ''
 		const formAuthor = formData.get('bookAuthor')?.toString() ?? ''
@@ -66,15 +72,18 @@ const mainApp = function () {
 		//
 		//
 		createCard(formTitle, formAuthor, formLanguage, formPages, formFinished, formReview)
+
+		if (formContainer && body) {
+			formContainer.style.display = 'none'
+			body.style.background = 'var(--clr-light)'
+		}
 	}
 
 	function createCard(..._formData: string[]) {
-		const cardContainer: Div = document.querySelector('.card-container')
-
 		const addClassToDiv = createElem('div')
 		const addClassToPara = createElem('p')
-		const addClassToDelIcon = createImage('./icons/delete-circle.png')
-		const addClassToCheckIcon = createImage('./icons/check-circle.png')
+		const addClassToDelIcon = createImage('./icons/delete-circle-outline.png')
+		const addClassToCheckIcon = createImage('./icons/check-circle-outline.png')
 
 		const bookContainer = addClassToDiv('card-book')
 		const iconContainer = addClassToDiv('icon-card-container')
@@ -98,13 +107,13 @@ const mainApp = function () {
 		cardAuthor.textContent = `by ${_formData[1]}`
 
 		bookContainer.appendChild(cardLanguage)
-		cardLanguage.textContent = _formData[2]
+		cardLanguage.textContent = `Language: ${_formData[2]}`
 
 		bookContainer.appendChild(cardPages)
-		cardPages.textContent = _formData[3]
+		cardPages.textContent = `Pages: ${_formData[3]}`
 
 		bookContainer.appendChild(cardStatus)
-		cardStatus.textContent = _formData[4]
+		cardStatus.textContent = `Status: ${_formData[4]}`
 
 		bookContainer.appendChild(cardReview)
 		cardReview.textContent = _formData[5]
@@ -113,24 +122,27 @@ const mainApp = function () {
 		iconContainer.appendChild(cardDelete)
 		iconContainer.appendChild(cardStatusChange)
 
-		// const addTextTobookContainer = appendOffspring(cardContainer, bookContainer)
-		// const addTextToCardTitle = appendOffspring(bookContainer, cardTitle)
-		// const addTextToCardAuthor = appendOffspring(bookContainer, cardAuthor)
-		// const addTextToCardLanguage = appendOffspring(bookContainer, cardLanguage)
-		// const addTextToCardPages = appendOffspring(bookContainer, cardPages)
-		// const addTextToCardStatus = appendOffspring(bookContainer, cardStatus)
-		// const addTextToCardReview = appendOffspring(bookContainer, cardReview)
-
-		// addTextToCardTitle(_formData[0])
-		// addTextToCardAuthor(_formData[1])
-		// addTextToCardLanguage(_formData[2])
-		// addTextToCardPages(_formData[3])
-		// addTextToCardStatus(_formData[4])
-		// addTextToCardReview(_formData[5])
-
-		log(_formData)
+		const deleteIcon: Image = document.querySelector('.icon-delete')
+		const statusChangeIcon: Image = document.querySelector('.icon-statusChange')
+		//
+		deleteIcon?.addEventListener('click', handleDeleteCard)
+		statusChangeIcon?.addEventListener('click', handleStatusChange)
+		//
 	}
 	//
+
+	function handleCloseIcon(this: HTMLImageElement, ev: MouseEvent) {
+		if (formContainer && body) {
+			formContainer.style.display = 'none'
+			body.style.background = 'var(--clr-light)'
+		}
+	}
+	function handleDeleteCard(this: HTMLImageElement, ev: MouseEvent) {
+		//use foreach from parent container to add eventlistener to all children to be clicked to removed
+	}
+	function handleStatusChange(this: HTMLImageElement, ev: MouseEvent) {
+		log(this)
+	}
 	//
 	//
 	//
@@ -164,20 +176,7 @@ const mainApp = function () {
 			return img
 		}
 	}
-	// function appendOffspring(
-	// 	parentElem: HTMLElement | null,
-	// 	childElem: HTMLElement | null
-	// ) {
-	// 	return function (_textContent: string) {
-	// 		const text = document.createTextNode(_textContent)
-
-	// 		if (childElem) {
-	// 			parentElem?.appendChild(childElem)
-	// 			childElem.appendChild(text)
-	// 		}
-	// 		return childElem
-	// 	}
-	// }
+	//
 	//
 	//
 	//
@@ -197,6 +196,7 @@ const mainApp = function () {
 	//
 	bttnAddBook?.addEventListener('click', handleBttnAddBook)
 	formBook?.addEventListener('submit', handleFormSubmit)
+	closeIcon?.addEventListener('click', handleCloseIcon)
 }
 
 document.addEventListener('DOMContentLoaded', mainApp)
