@@ -13,7 +13,6 @@ const mainApp = function () {
 	const body: Body = document.querySelector('.body')
 	const formContainer: Div = document.querySelector('.form-container')
 	const closeIcon: Image = document.querySelector('.icon-close')
-
 	const cardContainer: Div = document.querySelector('.card-container')
 	const finishedBttn: Input = document.querySelector('.isFinished')
 	//
@@ -33,11 +32,9 @@ const mainApp = function () {
 	//
 	//
 	//
-	function handleBttnAddBook(this: HTMLButtonElement, ev: MouseEvent) {
-		// if (formContainer) formContainer.style.display = 'block'
-
+	function handleBttnAddBook(this: HTMLButtonElement) {
 		if (formContainer && body) {
-			formContainer.style.display = 'inline-block'
+			formContainer.style.display = 'block'
 			body.style.background = 'hsla(0,0%,0%,0.3)'
 		}
 	}
@@ -122,26 +119,36 @@ const mainApp = function () {
 		iconContainer.appendChild(cardDelete)
 		iconContainer.appendChild(cardStatusChange)
 
-		const deleteIcon: Image = document.querySelector('.icon-delete')
-		const statusChangeIcon: Image = document.querySelector('.icon-statusChange')
+		cardDelete.addEventListener('click', handleDeleteIcon)
+		cardStatusChange.addEventListener('click', handleStatusChange)
 		//
-		deleteIcon?.addEventListener('click', handleDeleteCard)
-		statusChangeIcon?.addEventListener('click', handleStatusChange)
+
 		//
 	}
 	//
 
-	function handleCloseIcon(this: HTMLImageElement, ev: MouseEvent) {
+	function handleCloseIcon(this: HTMLImageElement) {
 		if (formContainer && body) {
 			formContainer.style.display = 'none'
 			body.style.background = 'var(--clr-light)'
 		}
 	}
-	function handleDeleteCard(this: HTMLImageElement, ev: MouseEvent) {
-		//use foreach from parent container to add eventlistener to all children to be clicked to removed
+
+	function handleDeleteIcon(this: HTMLImageElement) {
+		const iconContainer1 = this.parentElement as Div
+		const cardBook1 = iconContainer1?.parentElement as Div
+
+		if (cardBook1) cardBook1.style.display = 'none'
 	}
-	function handleStatusChange(this: HTMLImageElement, ev: MouseEvent) {
-		log(this)
+	function handleStatusChange(this: HTMLImageElement) {
+		const iconContainer2 = this.parentElement as Div
+		const cardStatus2 = iconContainer2?.previousSibling?.previousSibling
+
+		if (cardStatus2)
+			cardStatus2.textContent =
+				cardStatus2.textContent === 'Status: Reading'
+					? 'Status: Finished'
+					: 'Status: Reading'
 	}
 	//
 	//

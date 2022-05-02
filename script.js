@@ -25,10 +25,9 @@ const mainApp = function () {
     //
     //
     //
-    function handleBttnAddBook(ev) {
-        // if (formContainer) formContainer.style.display = 'block'
+    function handleBttnAddBook() {
         if (formContainer && body) {
-            formContainer.style.display = 'inline-block';
+            formContainer.style.display = 'block';
             body.style.background = 'hsla(0,0%,0%,0.3)';
         }
     }
@@ -100,25 +99,33 @@ const mainApp = function () {
         bookContainer.appendChild(iconContainer);
         iconContainer.appendChild(cardDelete);
         iconContainer.appendChild(cardStatusChange);
-        const deleteIcon = document.querySelector('.icon-delete');
-        const statusChangeIcon = document.querySelector('.icon-statusChange');
+        cardDelete.addEventListener('click', handleDeleteIcon);
+        cardStatusChange.addEventListener('click', handleStatusChange);
         //
-        deleteIcon === null || deleteIcon === void 0 ? void 0 : deleteIcon.addEventListener('click', handleDeleteCard);
-        statusChangeIcon === null || statusChangeIcon === void 0 ? void 0 : statusChangeIcon.addEventListener('click', handleStatusChange);
         //
     }
     //
-    function handleCloseIcon(ev) {
+    function handleCloseIcon() {
         if (formContainer && body) {
             formContainer.style.display = 'none';
             body.style.background = 'var(--clr-light)';
         }
     }
-    function handleDeleteCard(ev) {
-        //use foreach from parent container to add eventlistener to all children to be clicked to removed
+    function handleDeleteIcon() {
+        const iconContainer1 = this.parentElement;
+        const cardBook1 = iconContainer1 === null || iconContainer1 === void 0 ? void 0 : iconContainer1.parentElement;
+        if (cardBook1)
+            cardBook1.style.display = 'none';
     }
-    function handleStatusChange(ev) {
-        log(this);
+    function handleStatusChange() {
+        var _a;
+        const iconContainer2 = this.parentElement;
+        const cardStatus2 = (_a = iconContainer2 === null || iconContainer2 === void 0 ? void 0 : iconContainer2.previousSibling) === null || _a === void 0 ? void 0 : _a.previousSibling;
+        if (cardStatus2)
+            cardStatus2.textContent =
+                cardStatus2.textContent === 'Status: Reading'
+                    ? 'Status: Finished'
+                    : 'Status: Reading';
     }
     //
     //

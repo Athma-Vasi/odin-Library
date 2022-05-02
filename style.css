@@ -29,7 +29,7 @@ html {
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	background-color: var(--clr-light);
 	height: 100vh;
-	/* width: 828px; */
+	width: 100vw;
 	color: var(--clr-dark);
 	outline: 1px solid rebeccapurple;
 }
@@ -205,10 +205,10 @@ h1 {
 	padding: 2rem;
 	display: flex;
 	flex-direction: column;
-	outline: 1px solid teal;
+
 	background-color: var(--clr-med);
 	width: 250px;
-	border-radius: 5px;
+	border-radius: 7px;
 	box-shadow: 1.6px 2.6px 2.6px 2.6px var(--clr-heavy-alpha);
 }
 
