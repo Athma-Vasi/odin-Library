@@ -1,6 +1,5 @@
 "use strict";
 const mainApp = function () {
-    const log = (i) => console.log('\n', i);
     const bttnAddBook = document.querySelector('.bttn-addBook');
     const formBook = document.querySelector('#bookForm');
     const body = document.querySelector('.body');
@@ -8,46 +7,12 @@ const mainApp = function () {
     const closeIcon = document.querySelector('.icon-close');
     const cardContainer = document.querySelector('.card-container');
     const finishedBttn = document.querySelector('.isFinished');
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
     function handleBttnAddBook() {
         if (formContainer && body) {
-            formContainer.style.display = 'block';
-            body.style.background = 'hsla(0,0%,0%,0.3)';
+            formContainer.style.visibility = 'visible';
+            body.style.background = 'hsl(0,0%,0%,0.4)';
         }
     }
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
     function handleFormSubmit(ev) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         ev.preventDefault();
@@ -58,12 +23,10 @@ const mainApp = function () {
         const formPages = (_h = (_g = formData.get('bookPages')) === null || _g === void 0 ? void 0 : _g.toString()) !== null && _h !== void 0 ? _h : '';
         const formReview = (_k = (_j = formData.get('review')) === null || _j === void 0 ? void 0 : _j.toString()) !== null && _k !== void 0 ? _k : '';
         const formFinished = (finishedBttn === null || finishedBttn === void 0 ? void 0 : finishedBttn.checked) ? 'Finished' : 'Reading' !== null && 'Reading' !== void 0 ? 'Reading' : '';
-        //
-        //
         createCard(formTitle, formAuthor, formLanguage, formPages, formFinished, formReview);
         if (formContainer && body) {
-            formContainer.style.display = 'none';
-            body.style.background = 'var(--clr-light)';
+            formContainer.style.visibility = 'hidden';
+            body.style.background = 'var(--clr-lighter)';
         }
     }
     function createCard(..._formData) {
@@ -81,8 +44,6 @@ const mainApp = function () {
         const cardReview = addClassToPara('card-review');
         const cardDelete = addClassToDelIcon('icon-delete');
         const cardStatusChange = addClassToCheckIcon('icon-statusChange');
-        //
-        //
         cardContainer === null || cardContainer === void 0 ? void 0 : cardContainer.appendChild(bookContainer);
         bookContainer.appendChild(cardTitle);
         cardTitle.textContent = _formData[0];
@@ -101,14 +62,11 @@ const mainApp = function () {
         iconContainer.appendChild(cardStatusChange);
         cardDelete.addEventListener('click', handleDeleteIcon);
         cardStatusChange.addEventListener('click', handleStatusChange);
-        //
-        //
     }
-    //
     function handleCloseIcon() {
         if (formContainer && body) {
-            formContainer.style.display = 'none';
-            body.style.background = 'var(--clr-light)';
+            formContainer.style.visibility = 'hidden';
+            body.style.background = 'var(--clr-lighter)';
         }
     }
     function handleDeleteIcon() {
@@ -127,22 +85,6 @@ const mainApp = function () {
                     ? 'Status: Finished'
                     : 'Status: Reading';
     }
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
     function createElem(elemType) {
         return function (className) {
             const elem = document.createElement(elemType);
@@ -158,24 +100,6 @@ const mainApp = function () {
             return img;
         };
     }
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
     bttnAddBook === null || bttnAddBook === void 0 ? void 0 : bttnAddBook.addEventListener('click', handleBttnAddBook);
     formBook === null || formBook === void 0 ? void 0 : formBook.addEventListener('submit', handleFormSubmit);
     closeIcon === null || closeIcon === void 0 ? void 0 : closeIcon.addEventListener('click', handleCloseIcon);

@@ -1,6 +1,4 @@
 const mainApp = function () {
-	const log = (i: unknown) => console.log('\n', i)
-
 	type Button = HTMLButtonElement | null
 	type Form = HTMLFormElement | null
 	type Input = HTMLInputElement | null
@@ -15,46 +13,14 @@ const mainApp = function () {
 	const closeIcon: Image = document.querySelector('.icon-close')
 	const cardContainer: Div = document.querySelector('.card-container')
 	const finishedBttn: Input = document.querySelector('.isFinished')
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+
 	function handleBttnAddBook(this: HTMLButtonElement) {
 		if (formContainer && body) {
-			formContainer.style.display = 'block'
-			body.style.background = 'hsla(0,0%,0%,0.3)'
+			formContainer.style.visibility = 'visible'
+			body.style.background = 'hsl(0,0%,0%,0.4)'
 		}
 	}
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+
 	function handleFormSubmit(this: HTMLFormElement, ev: SubmitEvent) {
 		ev.preventDefault()
 
@@ -66,13 +32,11 @@ const mainApp = function () {
 		const formReview = formData.get('review')?.toString() ?? ''
 		const formFinished = finishedBttn?.checked ? 'Finished' : 'Reading' ?? ''
 
-		//
-		//
 		createCard(formTitle, formAuthor, formLanguage, formPages, formFinished, formReview)
 
 		if (formContainer && body) {
-			formContainer.style.display = 'none'
-			body.style.background = 'var(--clr-light)'
+			formContainer.style.visibility = 'hidden'
+			body.style.background = 'var(--clr-lighter)'
 		}
 	}
 
@@ -93,8 +57,7 @@ const mainApp = function () {
 		const cardReview = addClassToPara('card-review')
 		const cardDelete = addClassToDelIcon('icon-delete')
 		const cardStatusChange = addClassToCheckIcon('icon-statusChange')
-		//
-		//
+
 		cardContainer?.appendChild(bookContainer)
 
 		bookContainer.appendChild(cardTitle)
@@ -121,16 +84,12 @@ const mainApp = function () {
 
 		cardDelete.addEventListener('click', handleDeleteIcon)
 		cardStatusChange.addEventListener('click', handleStatusChange)
-		//
-
-		//
 	}
-	//
 
 	function handleCloseIcon(this: HTMLImageElement) {
 		if (formContainer && body) {
-			formContainer.style.display = 'none'
-			body.style.background = 'var(--clr-light)'
+			formContainer.style.visibility = 'hidden'
+			body.style.background = 'var(--clr-lighter)'
 		}
 	}
 
@@ -150,22 +109,6 @@ const mainApp = function () {
 					? 'Status: Finished'
 					: 'Status: Reading'
 	}
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 	function createElem(elemType: string) {
 		return function (className: string) {
@@ -183,24 +126,7 @@ const mainApp = function () {
 			return img
 		}
 	}
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+
 	bttnAddBook?.addEventListener('click', handleBttnAddBook)
 	formBook?.addEventListener('submit', handleFormSubmit)
 	closeIcon?.addEventListener('click', handleCloseIcon)

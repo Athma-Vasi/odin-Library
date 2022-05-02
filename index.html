@@ -9,7 +9,7 @@
 	</head>
 	<body class="body">
 		<div class="container">
-			<h1>Library</h1>
+			<h1 class="title">Library</h1>
 
 			<button type="button" class="bttn-addBook">Add new book</button>
 
@@ -17,25 +17,29 @@
 
 			<div class="form-container">
 				<form action="#" method="post" id="bookForm">
-					<img src="./icons/close-circle-outline.png" alt="close icon" class="icon-close" />
+					<img
+						src="./icons/close-circle-outline.png"
+						alt="close icon"
+						class="icon-close"
+					/>
 
-					<fieldset class=" fieldset form-fieldset">
+					<fieldset class="fieldset form-fieldset">
 						<legend>Enter book info</legend>
 
 						<p class="form-block form-title">
-							<label for="bookTitle">Title</label>
-							<input type="text" name="bookTitle" id="bookTitle" />
+							<label for="bookTitle"></label>
+							<input type="text" name="bookTitle" id="bookTitle" placeholder="Title" />
 						</p>
 
 						<p class="form-block form-author">
-							<label for="bookAuthor">Author</label>
-							<input type="text" name="bookAuthor" id="bookAuthor" />
+							<label for="bookAuthor"></label>
+							<input type="text" name="bookAuthor" id="bookAuthor" placeholder="Author" />
 						</p>
 
-						<p class="form-block ">
+						<p class="form-block">
 							<span class="form-language">
-								<label for="bookLanguage" class="form-language-label">Language</label>
-								<select name="bookLanguage" id="bookLanguage">
+								<label for="bookLanguage" class="form-language-label"></label>
+								<select name="bookLanguage" id="bookLanguage" aria-placeholder="Language">
 									<option value="English">English</option>
 									<option value="French">French</option>
 								</select></span
@@ -43,41 +47,38 @@
 						</p>
 
 						<p class="form-block form-pages">
-							<label for="bookPages">Pages</label>
-							<input type="number" name="bookPages" id="bookPages" />
+							<label for="bookPages"></label>
+							<input type="number" name="bookPages" id="bookPages" placeholder="Pages" />
 						</p>
 
 						<p class="form-block form-status">
-							<fieldset class="fieldset form-fieldset-info">
-								<legend>Status</legend>
-								<span class="form-status_finished">
-									<label for="isFinished">Finished</label>
-									<input
-										type="radio"
-										name="readStatus"
-										id="isFinished"
-										class="isFinished"
-									/>
-								</span>
-								<span class="form-status_progress">
-									<label for="inProgress">Reading</label>
-									<input
-										type="radio"
-										name="readStatus"
-										id="inProgress"
-										class="inProgress"
-									/>
-								</span>
-							</fieldset>
+							<span class="form-status_finished">
+								<label for="isFinished">Finished</label>
+								<input
+									type="radio"
+									name="readStatus"
+									id="isFinished"
+									class="isFinished"
+								/>
+							</span>
+							<span class="form-status_progress">
+								<label for="inProgress">Reading</label>
+								<input
+									type="radio"
+									name="readStatus"
+									id="inProgress"
+									class="inProgress"
+								/>
+							</span>
 						</p>
 
 						<p class="form-block form-review">
 							<span class="form-review-span">
-								<label for="review">Review</label>
+								<label for="review"></label>
 								<textarea
 									name="review"
 									id="review"
-									cols="30"
+									cols="23.5"
 									rows="5"
 									form="bookForm"
 									maxlength="150"
@@ -92,7 +93,7 @@
 					</fieldset>
 				</form>
 			</div>
-			<footer>
+			<footer class="footer">
 				<p>Made by <a href="https://github.com/Athma-Vasi">Athma Vasi</a></p>
 				<a href="#">View Code</a>
 			</footer>
