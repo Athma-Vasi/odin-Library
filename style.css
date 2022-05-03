@@ -36,21 +36,15 @@ html {
  container-all
 */
 .container {
-	display: grid;
-	grid-template-rows: 10% 5% 40% 40% 5%;
-	grid-template-areas:
-		'title'
-		'button'
-		'card'
-		'form'
-		'footer';
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 /**
  title
 */
 .title {
-	grid-area: title;
 	font-size: 5rem;
 	justify-self: center;
 	align-self: center;
@@ -60,7 +54,6 @@ html {
  button 
 */
 .bttn-addBook {
-	grid-area: button;
 	width: 180px;
 	height: 50px;
 	border-radius: var(--brdr-rad);
@@ -73,18 +66,19 @@ html {
 	font-weight: 500;
 	align-self: center;
 	justify-self: center;
+	margin-top: 2rem;
 }
 
 /**
  card-container  
 */
 .card-container {
-	grid-area: card;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	margin: var(--margin);
 	padding: var(--padding);
 	gap: 2rem;
+	overflow: auto;
 }
 .card-book {
 	display: flex;
@@ -105,7 +99,14 @@ html {
 }
 .card-author {
 	font-style: italic;
-	margin: 1.25rem 0px;
+	font-size: 1.8rem;
+	margin: 1.5rem 0px 2rem;
+}
+.card-language,
+.card-pages,
+.card-status {
+	font-size: 1.4rem;
+	margin: 0.5rem 0px;
 }
 .card-review {
 	border-radius: var(--brdr-rad);
@@ -113,6 +114,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
+	font-size: 1.4rem;
 }
 .icon-card-container {
 	width: calc(250px - 4rem);
@@ -131,7 +133,6 @@ html {
  form-container 
 */
 .form-container {
-	grid-area: form;
 	margin: var(--margin);
 	padding: var(--padding);
 	height: 566px;
@@ -144,13 +145,15 @@ html {
 	top: calc(50% - 283px);
 	visibility: hidden;
 	transform: scale(1.1);
+	overflow: auto;
 }
 #bookForm {
 	display: grid;
-	grid-template-rows: 9% 91%;
+	grid-template-rows: 5% 95%;
 	justify-items: center;
-	align-content: space-between;
+	align-content: center;
 	font-family: inherit;
+	font-size: 1.5rem;
 	color: var(--clr-heavy);
 }
 .icon-close {
@@ -177,8 +180,10 @@ input[type='number'] {
 	color: var(--clr-dark);
 }
 input:focus,
-input:hover {
+input:hover,
+input:active {
 	outline: 2px solid var(--clr-dark);
+	background-color: var(--clr-lighter);
 }
 
 select {
@@ -190,7 +195,8 @@ select {
 	color: var(--clr-dark);
 }
 select:focus,
-select:hover {
+select:hover,
+select:active {
 	outline: 2px solid var(--clr-dark);
 }
 label {
@@ -202,9 +208,14 @@ textarea {
 	border-radius: var(--brdr-rad);
 	resize: none;
 	font-family: inherit;
-	margin-left: 2px;
-	padding: 0.5rem;
+	width: 280px;
 	color: var(--clr-dark);
+}
+textarea:focus,
+textarea:hover,
+textarea:active {
+	outline: 2px solid var(--clr-dark);
+	background-color: var(--clr-lighter);
 }
 .bttn-submit {
 	width: 180px;
@@ -224,7 +235,6 @@ textarea {
  footer 
 */
 .footer {
-	grid-area: footer;
 	position: static;
 	bottom: 0;
 	display: flex;
