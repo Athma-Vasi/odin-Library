@@ -14,15 +14,14 @@ const mainApp = function () {
         }
     }
     function handleFormSubmit(ev) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         ev.preventDefault();
         const formData = new FormData(this);
-        const formTitle = (_b = (_a = formData.get('bookTitle')) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '';
-        const formAuthor = (_d = (_c = formData.get('bookAuthor')) === null || _c === void 0 ? void 0 : _c.toString()) !== null && _d !== void 0 ? _d : '';
-        const formLanguage = (_f = (_e = formData.get('bookLanguage')) === null || _e === void 0 ? void 0 : _e.toString()) !== null && _f !== void 0 ? _f : '';
-        const formPages = (_h = (_g = formData.get('bookPages')) === null || _g === void 0 ? void 0 : _g.toString()) !== null && _h !== void 0 ? _h : '';
-        const formReview = (_k = (_j = formData.get('review')) === null || _j === void 0 ? void 0 : _j.toString()) !== null && _k !== void 0 ? _k : '';
-        const formFinished = (finishedBttn === null || finishedBttn === void 0 ? void 0 : finishedBttn.checked) ? 'Finished' : 'Reading' !== null && 'Reading' !== void 0 ? 'Reading' : '';
+        const formTitle = formData.get('bookTitle')?.toString() ?? '';
+        const formAuthor = formData.get('bookAuthor')?.toString() ?? '';
+        const formLanguage = formData.get('bookLanguage')?.toString() ?? '';
+        const formPages = formData.get('bookPages')?.toString() ?? '';
+        const formReview = formData.get('review')?.toString() ?? '';
+        const formFinished = finishedBttn?.checked ? 'Finished' : 'Reading' ?? '';
         createCard(formTitle, formAuthor, formLanguage, formPages, formFinished, formReview);
         if (formContainer && body) {
             formContainer.style.visibility = 'hidden';
@@ -44,7 +43,7 @@ const mainApp = function () {
         const cardReview = addClassToPara('card-review');
         const cardDelete = addClassToDelIcon('icon-delete');
         const cardStatusChange = addClassToCheckIcon('icon-statusChange');
-        cardContainer === null || cardContainer === void 0 ? void 0 : cardContainer.appendChild(bookContainer);
+        cardContainer?.appendChild(bookContainer);
         bookContainer.appendChild(cardTitle);
         cardTitle.textContent = _formData[0];
         bookContainer.appendChild(cardAuthor);
@@ -71,14 +70,13 @@ const mainApp = function () {
     }
     function handleDeleteIcon() {
         const iconContainer1 = this.parentElement;
-        const cardBook1 = iconContainer1 === null || iconContainer1 === void 0 ? void 0 : iconContainer1.parentElement;
+        const cardBook1 = iconContainer1?.parentElement;
         if (cardBook1)
             cardBook1.style.display = 'none';
     }
     function handleStatusChange() {
-        var _a;
         const iconContainer2 = this.parentElement;
-        const cardStatus2 = (_a = iconContainer2 === null || iconContainer2 === void 0 ? void 0 : iconContainer2.previousSibling) === null || _a === void 0 ? void 0 : _a.previousSibling;
+        const cardStatus2 = iconContainer2?.previousSibling?.previousSibling;
         if (cardStatus2)
             cardStatus2.textContent =
                 cardStatus2.textContent === 'Status: Reading'
@@ -100,8 +98,8 @@ const mainApp = function () {
             return img;
         };
     }
-    bttnAddBook === null || bttnAddBook === void 0 ? void 0 : bttnAddBook.addEventListener('click', handleBttnAddBook);
-    formBook === null || formBook === void 0 ? void 0 : formBook.addEventListener('submit', handleFormSubmit);
-    closeIcon === null || closeIcon === void 0 ? void 0 : closeIcon.addEventListener('click', handleCloseIcon);
+    bttnAddBook?.addEventListener('click', handleBttnAddBook);
+    formBook?.addEventListener('submit', handleFormSubmit);
+    closeIcon?.addEventListener('click', handleCloseIcon);
 };
 document.addEventListener('DOMContentLoaded', mainApp);
