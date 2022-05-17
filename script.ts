@@ -5,6 +5,7 @@ const mainApp = function () {
 	type Image = HTMLImageElement | null
 	type Div = HTMLDivElement | null
 	type Body = HTMLBodyElement | null
+	type DivNodes = NodeListOf<HTMLDivElement> | null
 
 	const bttnAddBook: Button = document.querySelector('.bttn-addBook')
 	const formBook: Form = document.querySelector('#bookForm')
@@ -15,9 +16,16 @@ const mainApp = function () {
 	const finishedBttn: Input = document.querySelector('.isFinished')
 
 	function handleBttnAddBook(this: HTMLButtonElement) {
-		if (formContainer && body) {
+		const bookCards: DivNodes = document.querySelectorAll('.card-book')
+		const iconChange: Image = document.querySelector('.icon-statusChange')
+		const iconDelete: Image = document.querySelector('.icon-delete')
+
+		if (formContainer && body && bookCards) {
 			formContainer.style.visibility = 'visible'
 			body.style.background = 'hsl(0,0%,0%,0.4)'
+			bookCards.forEach((card) => (card.style.background = 'hsl(0,0%,0%,0.05)'))
+			if (iconChange) iconChange.style.background = 'hsl(0,0%,0%,0.2)'
+			if (iconDelete) iconDelete.style.background = 'hsl(0,0%,0%,0.2)'
 		}
 	}
 

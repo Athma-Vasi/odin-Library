@@ -8,9 +8,17 @@ const mainApp = function () {
     const cardContainer = document.querySelector('.card-container');
     const finishedBttn = document.querySelector('.isFinished');
     function handleBttnAddBook() {
-        if (formContainer && body) {
+        const bookCards = document.querySelectorAll('.card-book');
+        const iconChange = document.querySelector('.icon-statusChange');
+        const iconDelete = document.querySelector('.icon-delete');
+        if (formContainer && body && bookCards) {
             formContainer.style.visibility = 'visible';
             body.style.background = 'hsl(0,0%,0%,0.4)';
+            bookCards.forEach((card) => (card.style.background = 'hsl(0,0%,0%,0.05)'));
+            if (iconChange)
+                iconChange.style.background = 'hsl(0,0%,0%,0.2)';
+            if (iconDelete)
+                iconDelete.style.background = 'hsl(0,0%,0%,0.2)';
         }
     }
     function handleFormSubmit(ev) {
