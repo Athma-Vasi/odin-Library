@@ -135,14 +135,14 @@ html {
 .form-container {
 	margin: var(--margin);
 	padding: var(--padding);
-	height: 566px;
+	height: 600px;
 	width: 350px;
 	background-color: var(--clr-light);
 	border-radius: var(--brdr-rad);
 	/* modal */
 	position: fixed;
 	left: calc(50% - 175px);
-	top: calc(50% - 283px);
+	top: calc(50% - 300px);
 	visibility: hidden;
 	transform: scale(1.1);
 	overflow: auto;
